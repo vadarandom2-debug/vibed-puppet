@@ -16,7 +16,11 @@ async function launchBrowser(chromePath: string): Promise<Browser> {
     executablePath, headless: false, defaultViewport: null,
     userDataDir: chromePath,
     ignoreDefaultArgs: ['--enable-automation'],
-    args: ['--start-maximized','--no-first-run','--no-default-browser-check','--disable-blink-features=AutomationControlled'],
+    args: [
+      '--start-maximized','--no-first-run','--no-default-browser-check','--disable-blink-features=AutomationControlled',
+      // Containers (e.g. Codespaces) have no user namespaces for Chrome's sandbox
+      ...(process.platform === 'linux' ? ['--no-sandbox', '--disable-dev-shm-usage'] : []),
+    ],
   })
 }
 

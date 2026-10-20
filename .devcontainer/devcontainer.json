@@ -1,0 +1,14 @@
+{
+  "name": "vibed-puppet",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
+  },
+  "hostRequirements": { "cpus": 2, "memory": "8gb" },
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": { "label": "Desktop (password: vscode)", "onAutoForward": "notify" }
+  },
+  "postCreateCommand": "wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt-get update && sudo apt-get install -y /tmp/chrome.deb && rm /tmp/chrome.deb && npm install",
+  "postAttachCommand": "echo 'Open the Ports tab -> port 6080 -> globe icon (password: vscode). Then run: npm run start:codespace'"
+}

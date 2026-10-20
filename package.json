@@ -20,6 +20,7 @@
   ],
   "scripts": {
     "dev": "electron-vite dev",
+    "start:codespace": "DISPLAY=:1 electron-vite dev --noSandbox",
     "build": "electron-vite build",
     "preview": "electron-vite preview",
     "dist": "electron-vite build && electron-builder",
